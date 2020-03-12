@@ -1,7 +1,7 @@
 # RedM RCP's Trainer Menu: Weapons
 NUI trainer menu for Weapons in RedM, the Red Dead Redemption 2 Multiplayer Mod, from the Creators of FiveM!
 # Screenshots:
-<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/1.png" target="_blank">**1**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/2.png" target="_blank">**2**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/3.png" target="_blank">**3**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/4.png" target="_blank">**4**</a>
+<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/1.png" target="_blank">**Weapons**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/2.png" target="_blank">**Other**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/3.png" target="_blank">**Ammo**</a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/4.png" target="_blank">**Impacts & Shot Entities**</a>
 :---:|:---:|:---:|:---:
 <a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/1.png" target="_blank"><img alt="RedMRCPWeapons" src="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/1.png"></a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/2.png" target="_blank"><img alt="RedMRCPWeapons" src="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/2.png"></a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/3.png" target="_blank"><img alt="RedMRCPWeapons" src="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/3.png"></a>|<a href="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/4.png" target="_blank"><img alt="RedMRCPWeapons" src="https://www.rcpisawesome.co.uk/dev/RedMRCPWeapons/4.png"></a>
 # Video:
