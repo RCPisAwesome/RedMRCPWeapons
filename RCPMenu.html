@@ -1,0 +1,475 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Weapon Menu By RCPisAwesome</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://www.rcpisawesome.co.uk/dev/RCPMenu.js" type="text/javascript"></script>
+	<link href="https://www.rcpisawesome.co.uk/dev/RCPMenu.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<script type="text/javascript">
+		$(function() {
+			var location = window.location.href;
+			var directoryPath = location.substring(6, location.lastIndexOf("/")+1);
+			$("button").click(function(){
+				if (document.getElementById("switch").checked == true) {
+					colourselectedbutton(this);
+				}else{
+					colouronlyselectedbutton(this);
+				}
+				if (this.id == "removeallweapons"){
+					$.post('http://'+directoryPath+"removeallweapons");
+				}else if (this.id == "removecurrentweapon"){
+					$.post('http://'+directoryPath+"removecurrentweapon");
+				}else if (this.id == "maxammo"){
+					$.post('http://'+directoryPath+"maxammo");
+				}else if (this.id == "infinite"){
+					$.post('http://'+directoryPath+"infinite");
+				}else if (this.id == "infiniteinclip"){
+					$.post('http://'+directoryPath+"infiniteinclip");
+				}else if (this.id == "showimpacts"){
+					$.post('http://'+directoryPath+"showimpacts");
+				}else if (this.id == "showdamagedentities"){
+					$.post('http://'+directoryPath+"showdamagedentities");
+				}else if ($(this).hasClass("weapon")){
+					$.post(('http://'+directoryPath+"weapon"), JSON.stringify({
+						hash: $(this).attr('id'),
+						text: $(this).html()
+					}));
+				}else{
+					$.post(('http://'+directoryPath+"ammo"), JSON.stringify({
+						hash: $(this).attr('id'),
+						amount: $("#amount").val(),
+						text: $(this).html()
+					}));
+				} 
+				
+			});
+		})
+	</script>
+	<style type="text/css">
+		.weapon{
+			width: 256px;
+			height: 128px;
+			background-position: center;
+			background-size: 256px 128px;
+			background-repeat: no-repeat;
+		}
+		#menu{
+			height: 83% !important;
+			overflow: hidden;
+		}
+		.tab{
+			overflow-y:auto !important;
+			height: 86%;
+			width: 100%;
+		}
+		.tabbutton{
+			width: 33.33% !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="menu">
+		<div id='titlebar'>
+			<div id="close">X</div>
+			<label class="switch">
+				<input id="switch" type="checkbox" checked>
+				<span class="slider"></span>
+			</label>
+			<div id="title"></div>
+		</div>
+
+		<div class="tabbutton">Ammo</div>
+		<div class="tabbutton">Melee</div>
+		<div id="tabdefault" class="tabbutton">Revolvers</div>
+		<div class="tabbutton">Pistols</div>
+		<div class="tabbutton">Shotguns</div>
+		<div class="tabbutton">Rifles</div>
+		<div class="tabbutton">Other</div>
+		<div class="tabbutton">Animals</div>
+		<div class="tabbutton">Throwables</div>
+
+		<div id="Ammo" class="tab">
+			<div>
+				<button id="removeallweapons">Remove All Weapons</button>
+				<button id="removecurrentweapon">Remove Current Weapon</button>
+				<button id="maxammo">Give Max Ammo for All Weapons</button>
+				<button id="infinite">Toggle Infinite Ammo</button>
+				<button id="infiniteinclip">Toggle Infinite Ammo In Clip</button>
+				<button id="showimpacts">Toggle Bullet Impacts</button>
+				<button id="showdamagedentities">Toggle Shot Entities</button>
+			</div>
+			<div>
+				<p>Ammo Amount to Add:</p><input  id="amount" type="number" min="0" value="100" step="1" oninput="validity.valid||(value='100');" placeholder="0">
+			</div>
+			<div>
+				<button id="AMMO_REVOLVER" class="ammo">Revolver</button>
+				<button id="AMMO_REVOLVER_EXPRESS" class="ammo">Express Revolver</button>
+				<button id="AMMO_REVOLVER_EXPRESS_EXPLOSIVE" class="ammo">Express Explosive Revolver</button>
+				<button id="AMMO_REVOLVER_HIGH_VELOCITY" class="ammo">High Velocity Revolver</button>
+				<button id="AMMO_REVOLVER_SPLIT_POINT" class="ammo">Split Point Revolver</button>
+			</div>
+			<div>
+				<button id="AMMO_PISTOL" class="ammo">Pistol</button>
+				<button id="AMMO_PISTOL_EXPRESS" class="ammo">Express Pistol</button>
+				<button id="AMMO_PISTOL_EXPRESS_EXPLOSIVE" class="ammo">Express Explosive Pistol</button>
+				<button id="AMMO_PISTOL_HIGH_VELOCITY" class="ammo">High Velocity Pistol</button>
+				<button id="AMMO_PISTOL_SPLIT_POINT" class="ammo">Split Point Pistol</button>
+			</div>
+			<div>
+				<button id="AMMO_SHOTGUN" class="ammo">Shotgun</button>
+				<button id="AMMO_SHOTGUN_BUCKSHOT_INCENDIARY" class="ammo">Shotgun Buckshot Incendiary</button>
+				<button id="AMMO_SHOTGUN_EXPRESS_EXPLOSIVE" class="ammo">Express Explosive Shotgun</button>
+				<button id="AMMO_SHOTGUN_SLUG" class="ammo">Shotgun Slug</button>
+			</div>
+			<div>
+				<button id="AMMO_RIFLE" class="ammo">Rifle</button>
+				<button id="AMMO_RIFLE_EXPRESS" class="ammo">Express Rifle</button>
+				<button id="AMMO_RIFLE_EXPRESS_EXPLOSIVE" class="ammo">Express Explosive Rifle</button>
+				<button id="AMMO_RIFLE_HIGH_VELOCITY" class="ammo">High Velocity Rifle</button>
+				<button id="AMMO_RIFLE_SPLIT_POINT" class="ammo">Split Point Rifle</button>
+				<button id="AMMO_RIFLE_VARMINT" class="ammo">Varmint Rifle</button>
+			</div>
+			<div>
+				<button id="AMMO_REPEATER" class="ammo">Repeater</button>
+				<button id="AMMO_REPEATER_EXPRESS" class="ammo">Express Repeater</button>
+				<button id="AMMO_REPEATER_EXPRESS_EXPLOSIVE" class="ammo">Express Explosive Repeater</button>
+				<button id="AMMO_REPEATER_HIGH_VELOCITY" class="ammo">High Velocity Repeater</button>
+			</div>
+			<div>
+				<button id="AMMO_DYNAMITE" class="ammo">Dynamite</button>
+				<button id="AMMO_DYNAMITE_VOLATILE" class="ammo">Volatile Dynamite</button>
+				<button id="AMMO_MOLOTOV" class="ammo">Molotov</button>
+				<button id="AMMO_MOLOTOV_VOLATILE" class="ammo">Volatile Molotov</button>
+				<button id="AMMO_THROWING_KNIVES" class="ammo">Throwing Knife</button>
+				<button id="AMMO_THROWING_KNIVES_IMPROVED" class="ammo">Improved Throwing Knife</button>
+				<button id="AMMO_THROWING_KNIVES_POISON" class="ammo">Poison Throwing Knife</button>
+				<button id="AMMO_TOMAHAWK" class="ammo">Tomahawk</button>
+				<button id="AMMO_TOMAHAWK_HOMING" class="ammo">Homing Tomahawk</button>
+				<button id="AMMO_TOMAHAWK_IMPROVED" class="ammo">Improved Tomahawk</button>
+			</div>
+			<div>
+				<button id="AMMO_ARROW" class="ammo">Arrow</button>
+				<button id="AMMO_ARROW_DYNAMITE" class="ammo">Dynamite Arrow</button>
+				<button id="AMMO_ARROW_FIRE" class="ammo">Fire Arrow</button>
+				<button id="AMMO_ARROW_IMPROVED" class="ammo">Improved Arrow</button>
+				<button id="AMMO_ARROW_POISON" class="ammo">Poison Arrow</button>
+				<button id="AMMO_ARROW_SMALL_GAME" class="ammo">Small Game Arrow</button>
+			</div>
+		</div>
+		<div id="Melee" class="tab">
+			<button id="WEAPON_MELEE_KNIFE_BEAR" class="weapon">Antler Knife (Bear)</button>
+			<button id="WEAPON_MELEE_BROKEN_SWORD" class="weapon">Broken Pirate Sword</button>
+			<button id="WEAPON_MELEE_KNIFE_CIVIL_WAR" class="weapon">Civil War Knife</button>
+			<button id="WEAPON_MELEE_CLEAVER" class="weapon">Cleaver</button>
+			<button id="WEAPON_MELEE_HATCHET_DOUBLE_BIT" class="weapon">Double Bit Hatchet</button>
+			<button id="WEAPON_MELEE_HATCHET" class="weapon">Hatchet</button>
+			<button id="WEAPON_MELEE_HATCHET_HEWING" class="weapon">Hewing Hatchet</button>
+			<button id="WEAPON_MELEE_HATCHET_HUNTER" class="weapon">Hunter Hatchet</button>
+			<button id="WEAPON_MELEE_KNIFE" class="weapon">Hunter Knife</button>
+			<button id="WEAPON_MELEE_KNIFE_JAWBONE" class="weapon">Jawbone Knife</button>
+			<button id="WEAPON_MELEE_KNIFE_JOHN" class="weapon">John's Knife</button>
+			<button id="WEAPON_MELEE_MACHETE" class="weapon">Machete</button>
+			<button id="WEAPON_MELEE_KNIFE_VAMPIRE" class="weapon">Ornate Dagger (Vampire Knife)</button>
+			<button id="WEAPON_MELEE_HATCHET_DOUBLE_BIT_RUSTED" class="weapon">Rusted Double Bit Hatchet</button>
+			<button id="WEAPON_MELEE_HATCHET_HUNTER_RUSTED" class="weapon">Rusted Hunter Hatchet</button>
+			<button id="WEAPON_MELEE_ANCIENT_HATCHET" class="weapon">Stone Hatchet</button>
+			<button id="WEAPON_MELEE_HATCHET_VIKING" class="weapon">Viking Hatchet</button>
+			<button id="WEAPON_MELEE_KNIFE_MINER" class="weapon">Wide-Blade Knife (Miner)</button>
+			<style type="text/css">
+				#WEAPON_MELEE_KNIFE_BEAR{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/antler-knife.jpg');
+				}
+				#WEAPON_MELEE_BROKEN_SWORD{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/broken-pirate-sword.jpg');
+				}
+				#WEAPON_MELEE_KNIFE_CIVIL_WAR{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/civil-war-knife.jpg');
+				}
+				#WEAPON_MELEE_CLEAVER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cleaver.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_DOUBLE_BIT{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-bit-hatchet.jpg');
+				}
+				#WEAPON_MELEE_HATCHET{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/hatchet.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_HEWING{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/hewing-hatchet.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_HUNTER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/hunter-hatchet.jpg');
+				}
+				#WEAPON_MELEE_KNIFE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/hunting-knife.jpg');
+				}
+				#WEAPON_MELEE_KNIFE_JAWBONE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/jawbone-knife.jpg');
+				}
+				#WEAPON_MELEE_KNIFE_JOHN{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/knife-john.jpg');
+				}
+				#WEAPON_MELEE_MACHETE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/machete.jpg');
+				}
+				#WEAPON_MELEE_KNIFE_VAMPIRE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/ornate-dagger.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_DOUBLE_BIT_RUSTED{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/rusted-double-bit-hatchet.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_HUNTER_RUSTED{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/rusted-hunter-hatchet.jpg');
+				}
+				#WEAPON_MELEE_ANCIENT_HATCHET{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/stone-hatchet.jpg');
+				}
+				#WEAPON_MELEE_HATCHET_VIKING{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/viking-hatchet.jpg');
+				}
+				#WEAPON_MELEE_KNIFE_MINER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/wide-blade-knife.jpg');
+				}
+			</style>
+		</div>
+		<div id="Revolvers" class="tab">
+			<button id="WEAPON_REVOLVER_CATTLEMAN" class="weapon">Cattleman</button>
+			<button id="WEAPON_REVOLVER_CATTLEMAN_JOHN" class="weapon">John's Cattleman</button>
+			<button id="WEAPON_REVOLVER_CATTLEMAN_MEXICAN" class="weapon">Flaco's Cattleman (Mexican)</button>
+			<button id="WEAPON_REVOLVER_CATTLEMAN_PIG" class="weapon">Granger's Cattleman (Pig)</button>
+			<button id="WEAPON_REVOLVER_DOUBLEACTION" class="weapon">Double-Action</button>
+			<button id="WEAPON_REVOLVER_DOUBLEACTION_EXOTIC" class="weapon">Algernon's Double-Action (Exotic)</button>
+			<button id="WEAPON_REVOLVER_DOUBLEACTION_GAMBLER" class="weapon">High Roller Double-Action (Gambler)</button>
+			<button id="WEAPON_REVOLVER_DOUBLEACTION_MICAH" class="weapon">Micah's Double-Action</button>
+			<button id="WEAPON_REVOLVER_LEMAT" class="weapon">LeMat</button>
+			<button id="WEAPON_REVOLVER_SCHOFIELD" class="weapon">Schofield</button>
+			<button id="WEAPON_REVOLVER_SCHOFIELD_CALLOWAY" class="weapon">Calloway's Schofield</button>
+			<button id="WEAPON_REVOLVER_SCHOFIELD_GOLDEN" class="weapon">Otis Miller's Schofield (Golden)</button>
+			<style type="text/css">
+				#WEAPON_REVOLVER_CATTLEMAN{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cattleman-revolver.jpg');
+				}
+				#WEAPON_REVOLVER_CATTLEMAN_JOHN{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cattleman-revolver-john.jpg');
+				}
+				#WEAPON_REVOLVER_CATTLEMAN_MEXICAN{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cattleman-revolver-flaco.jpg');
+				}
+				#WEAPON_REVOLVER_CATTLEMAN_PIG{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cattleman-revolver-granger.jpg');
+				}
+				#WEAPON_REVOLVER_DOUBLEACTION{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-action-revolver.jpg');
+				}
+				#WEAPON_REVOLVER_DOUBLEACTION_EXOTIC{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-action-revolver-algernon.jpg');
+				}
+				#WEAPON_REVOLVER_DOUBLEACTION_GAMBLER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/high-roller-revolver.jpg');
+				}
+				#WEAPON_REVOLVER_DOUBLEACTION_MICAH{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-action-revolver-micah.jpg');
+				}
+				#WEAPON_REVOLVER_LEMAT{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/lemat-revolver.jpg');
+				}
+				#WEAPON_REVOLVER_SCHOFIELD{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/schofield-revolver.jpg');
+				}
+				#WEAPON_REVOLVER_SCHOFIELD_CALLOWAY{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/schofield-revolver-calloway.jpg');
+				}
+				#WEAPON_REVOLVER_SCHOFIELD_GOLDEN{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/schofield-revolver-miller.jpg');
+				}
+				
+			</style>
+		</div>
+		<div id="Pistols" class="tab">
+			<button id="WEAPON_PISTOL_M1899" class="weapon">M1899</button>
+			<button id="WEAPON_PISTOL_MAUSER" class="weapon">Mauser</button>
+			<button id="WEAPON_PISTOL_MAUSER_DRUNK" class="weapon">Midnight's Mauser (Drunk)</button>
+			<button id="WEAPON_PISTOL_SEMIAUTO" class="weapon">Semi Automatic</button>
+			<button id="WEAPON_PISTOL_VOLCANIC" class="weapon">Volcanic</button>
+			<style type="text/css">
+				#WEAPON_PISTOL_M1899{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/full/m1899-pistol.jpg');
+				}
+				#WEAPON_PISTOL_MAUSER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/mauser-pistol.jpg');
+				}
+				#WEAPON_PISTOL_MAUSER_DRUNK{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/mauser-pistol-midnight.jpg');
+				}
+				#WEAPON_PISTOL_SEMIAUTO{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/semi-automatic-pistol.jpg');
+				}
+				#WEAPON_PISTOL_VOLCANIC{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/volcanic-pistol.jpg');
+				}
+			</style>
+		</div>
+		<div id="Shotguns" class="tab">
+			<button id="WEAPON_SHOTGUN_DOUBLEBARREL" class="weapon">Double-Barreled</button>
+			<button id="WEAPON_SHOTGUN_PUMP" class="weapon">Pump Action</button>
+			<button id="WEAPON_SHOTGUN_DOUBLEBARREL_EXOTIC" class="weapon">Rare Double-Barreled (Exotic)</button>
+			<button id="WEAPON_SHOTGUN_REPEATING" class="weapon">Repeating</button>
+			<button id="WEAPON_SHOTGUN_SAWEDOFF" class="weapon">Sawed-Off</button>
+			<button id="WEAPON_SHOTGUN_SEMIAUTO" class="weapon">Semi Automatic</button>
+			<style type="text/css">
+				#WEAPON_SHOTGUN_DOUBLEBARREL{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-barreled-shotgun.jpg');
+				}
+				#WEAPON_SHOTGUN_PUMP{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/pump-action-shotgun.jpg');
+				}
+				#WEAPON_SHOTGUN_DOUBLEBARREL_EXOTIC{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-barreled-shotgun-rare.jpg');
+				}
+				#WEAPON_SHOTGUN_REPEATING{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/repeating-shotgun.jpg');
+				}
+				#WEAPON_SHOTGUN_SAWEDOFF{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/sawed-off-shotgun.jpg');
+				}
+				#WEAPON_SHOTGUN_SEMIAUTO{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/semi-auto-shotgun.jpg');
+				}
+			</style>
+		</div>
+		<div id="Rifles" class="tab">			
+			<button id="WEAPON_RIFLE_BOLTACTION" class="weapon">Bolt Action Rifle</button>
+			<button id="WEAPON_REPEATER_CARBINE" class="weapon">Carbine Repeater</button>
+			<button id="WEAPON_SNIPERRIFLE_CARCANO" class="weapon">Carcano Sniper Rifle</button>
+			<button id="WEAPON_REPEATER_EVANS" class="weapon">Evans Repeater</button>
+			<button id="WEAPON_REPEATER_HENRY" class="weapon">Litchfield Repeater (Henry)</button>
+			<button id="WEAPON_REPEATER_WINCHESTER" class="weapon">Lancaster Repeater (Winchester)</button>
+			<button id="WEAPON_SNIPERRIFLE_ROLLINGBLOCK_EXOTIC" class="weapon">Rare Rolling Block Sniper Rifle (Exotic)</button>
+			<button id="WEAPON_SNIPERRIFLE_ROLLINGBLOCK" class="weapon">Rolling Block Sniper Rifle</button>
+			<button id="WEAPON_RIFLE_SPRINGFIELD" class="weapon">Springfield Rifle</button>
+			<button id="WEAPON_RIFLE_VARMINT" class="weapon">Varmint Rifle</button>
+			<style type="text/css">
+				/*Snipers*/
+				#WEAPON_SNIPERRIFLE_CARCANO{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/carcano-rifle.jpg');
+				}
+				#WEAPON_SNIPERRIFLE_ROLLINGBLOCK_EXOTIC{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/rolling-block-rifle-rare.jpg');
+				}
+				#WEAPON_SNIPERRIFLE_ROLLINGBLOCK{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/rolling-block-rifle.jpg');
+				}
+				/*Rifles*/
+				#WEAPON_RIFLE_BOLTACTION{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/bolt-action-rifle.jpg');
+				}
+				#WEAPON_RIFLE_SPRINGFIELD{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/springfield-rifle.jpg');
+				}
+				#WEAPON_RIFLE_VARMINT{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/varmint-rifle.jpg');
+				}
+				/*Repeaters*/
+				#WEAPON_REPEATER_CARBINE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/carbine-repeater.jpg');
+				}
+				#WEAPON_REPEATER_EVANS{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/evans-repeater.jpg');
+				}
+				#WEAPON_REPEATER_WINCHESTER{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/lancaster-repeater.jpg');
+				}
+				#WEAPON_REPEATER_HENRY{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/litchfield-repeater.jpg');
+				}
+			</style>
+		</div>
+		<div id="Other" class="tab">
+			<button id="WEAPON_KIT_BINOCULARS" class="weapon">Binoculars</button>
+			<button id="WEAPON_BOW" class="weapon">Bow</button>
+			<button id="WEAPON_KIT_CAMERA" class="weapon">Camera</button>
+			<button id="WEAPON_FISHINGROD" class="weapon">Fishing Rod</button>
+			<button id="WEAPON_MELEE_LANTERN" class="weapon">Lantern</button>
+			<button id="WEAPON_MELEE_LANTERN_ELECTRIC" class="weapon">Electric Lantern</button>
+			<button id="WEAPON_LASSO" class="weapon">Lasso</button>
+			<button id="WEAPON_MOONSHINEJUG" class="weapon">Moonshine Jug</button>
+			<button id="WEAPON_MELEE_TORCH" class="weapon">Torch</button>
+			<style type="text/css">
+				#WEAPON_KIT_BINOCULARS{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/4/40/RD2_Binoculars_Symbol.png');
+				}
+				#WEAPON_BOW{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/bow-and-arrows.jpg');
+				}
+				#WEAPON_KIT_CAMERA{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/7/78/Camera_rdr2.png');
+				}
+				#WEAPON_FISHINGROD{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/9/9f/RDR2_Fishing_rod_Compendium.png');
+				}
+				#WEAPON_MELEE_LANTERN{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/b/b0/Rdr2_lantern_symbol.png');
+				}
+				#WEAPON_MELEE_LANTERN_ELECTRIC{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/b/b0/Rdr2_lantern_symbol.png');
+				}
+				#WEAPON_LASSO{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/lasso.jpg');
+				}
+				#WEAPON_MOONSHINEJUG{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/flammable-moonshine.jpg');
+				}
+				#WEAPON_MELEE_TORCH{
+					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/1/16/Antorchanegra.png');
+				}
+			</style>
+		</div>
+		<div id="Throwables" class="tab">
+			<button id="WEAPON_THROWN_TOMAHAWK_ANCIENT" class="weapon">Ancient Tomahawk</button>
+			<button id="WEAPON_THROWN_DYNAMITE" class="weapon">Dynamite</button>
+			<button id="WEAPON_THROWN_MOLOTOV" class="weapon">Molotov</button>
+			<button id="WEAPON_THROWN_THROWING_KNIVES" class="weapon">Throwing Knives</button>
+			<button id="WEAPON_THROWN_TOMAHAWK" class="weapon">Tomahawk</button>
+			<style type="text/css">
+				#WEAPON_THROWN_TOMAHAWK_ANCIENT{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/ancient-tomahawk.jpg');
+				}
+				#WEAPON_THROWN_DYNAMITE{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/dynamite.jpg');
+				}
+				#WEAPON_THROWN_MOLOTOV{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/fire-bottle.jpg');
+				}
+				#WEAPON_THROWN_THROWING_KNIVES{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/throwing-knife.jpg');
+				}
+				#WEAPON_THROWN_TOMAHAWK{
+					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/tomahawk.jpg');
+				}
+			</style>
+		</div>
+		<div id="Animals" class="tab">
+			<div>
+				<p>Use is unknown but they stop the character from being able to move until removed</p>
+			</div>
+			<button id="F9FBAEBE" class="weapon">Animal</button>
+			<button id="B5C5D8F1" class="weapon">Alligator</button>
+			<button id="D872AB0A" class="weapon">Badger</button>
+			<button id="1EC181D9" class="weapon">Bear</button>
+			<button id="30E5211A" class="weapon">Beaver</button>
+			<button id="8BD282A4" class="weapon">Horse</button>
+			<button id="08D4BE52" class="weapon">Cougar</button>
+			<button id="453467D1" class="weapon">Coyote</button>
+			<button id="F4C67A9E" class="weapon">Deer</button>
+			<button id="33B2D208" class="weapon">Fox</button>
+			<button id="2D880572" class="weapon">Muskrat</button>
+			<button id="0356951B" class="weapon">Raccoon</button>
+			<button id="D8EFBC17" class="weapon">Snake</button>
+			<button id="0238A339" class="weapon">Wolf</button>
+			<button id="88394C06" class="weapon">WolfMedium</button>
+			<button id="C80FDF53" class="weapon">WolfSmall</button>
+		</div>
+	</div>
+</body>
+</html>
