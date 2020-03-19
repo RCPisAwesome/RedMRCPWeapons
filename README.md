@@ -21,3 +21,5 @@ NUI trainer menu for Weapons in RedM, the Red Dead Redemption 2 Multiplayer Mod,
 If you find a bug, issue or error or if you want to request a new feature, [create an issue](https://github.com/RCPisAwesome/RedMRCPWeapons/issues) with as much information as you can provide
 
 If you ever get stuck in the menu from an issue you can do rcpuifix in the F8 console to close it if you have my Settings Menu installed
+
+If your menu doesn't look like the screenshots (click on them to make sure its the latest image), delete your RedM cache except the game folder and your server cache too
