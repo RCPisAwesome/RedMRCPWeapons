@@ -1,21 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title>Weapon Menu By RCPisAwesome</title>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://www.rcpisawesome.co.uk/dev/RCPMenu.js" type="text/javascript"></script>
+	<script src="https://www.rcpisawesome.co.uk/dev/RCPMenu.js"></script>
 	<link href="https://www.rcpisawesome.co.uk/dev/RCPMenu.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-	<script type="text/javascript">
+	<script>
 		$(function() {
-			var location = window.location.href;
-			var directoryPath = location.substring(6, location.lastIndexOf("/")+1);
 			$("button").click(function(){
-				if (document.getElementById("switch").checked == true) {
-					colourselectedbutton(this);
-				}else{
-					colouronlyselectedbutton(this);
-				}
+				var location = window.location.href;
+				var directoryPath = location.substring(6, location.lastIndexOf("/")+1);
 				if (this.id == "removeallweapons"){
 					$.post('http://'+directoryPath+"removeallweapons");
 				}else if (this.id == "removecurrentweapon"){
@@ -46,7 +42,7 @@
 			});
 		})
 	</script>
-	<style type="text/css">
+	<style>
 		.weapon{
 			width: 256px;
 			height: 128px;
@@ -55,16 +51,13 @@
 			background-repeat: no-repeat;
 		}
 		#menu{
-			height: 83% !important;
-			overflow: hidden;
+			height: 83%;
 		}
 		.tab{
-			overflow-y:auto !important;
 			height: 86%;
-			width: 100%;
 		}
 		.tabbutton{
-			width: 33.33% !important;
+			width: 33.33%;
 		}
 	</style>
 </head>
@@ -176,7 +169,7 @@
 			<button id="WEAPON_MELEE_ANCIENT_HATCHET" class="weapon">Stone Hatchet</button>
 			<button id="WEAPON_MELEE_HATCHET_VIKING" class="weapon">Viking Hatchet</button>
 			<button id="WEAPON_MELEE_KNIFE_MINER" class="weapon">Wide-Blade Knife (Miner)</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_MELEE_KNIFE_BEAR{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/antler-knife.jpg');
 				}
@@ -246,7 +239,7 @@
 			<button id="WEAPON_REVOLVER_SCHOFIELD" class="weapon">Schofield</button>
 			<button id="WEAPON_REVOLVER_SCHOFIELD_CALLOWAY" class="weapon">Calloway's Schofield</button>
 			<button id="WEAPON_REVOLVER_SCHOFIELD_GOLDEN" class="weapon">Otis Miller's Schofield (Golden)</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_REVOLVER_CATTLEMAN{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/cattleman-revolver.jpg');
 				}
@@ -282,8 +275,7 @@
 				}
 				#WEAPON_REVOLVER_SCHOFIELD_GOLDEN{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/schofield-revolver-miller.jpg');
-				}
-				
+				}	
 			</style>
 		</div>
 		<div id="Pistols" class="tab">
@@ -292,7 +284,7 @@
 			<button id="WEAPON_PISTOL_MAUSER_DRUNK" class="weapon">Midnight's Mauser (Drunk)</button>
 			<button id="WEAPON_PISTOL_SEMIAUTO" class="weapon">Semi Automatic</button>
 			<button id="WEAPON_PISTOL_VOLCANIC" class="weapon">Volcanic</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_PISTOL_M1899{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/full/m1899-pistol.jpg');
 				}
@@ -317,7 +309,7 @@
 			<button id="WEAPON_SHOTGUN_REPEATING" class="weapon">Repeating</button>
 			<button id="WEAPON_SHOTGUN_SAWEDOFF" class="weapon">Sawed-Off</button>
 			<button id="WEAPON_SHOTGUN_SEMIAUTO" class="weapon">Semi Automatic</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_SHOTGUN_DOUBLEBARREL{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/double-barreled-shotgun.jpg');
 				}
@@ -349,7 +341,7 @@
 			<button id="WEAPON_SNIPERRIFLE_ROLLINGBLOCK" class="weapon">Rolling Block Sniper Rifle</button>
 			<button id="WEAPON_RIFLE_SPRINGFIELD" class="weapon">Springfield Rifle</button>
 			<button id="WEAPON_RIFLE_VARMINT" class="weapon">Varmint Rifle</button>
-			<style type="text/css">
+			<style>
 				/*Snipers*/
 				#WEAPON_SNIPERRIFLE_CARCANO{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/carcano-rifle.jpg');
@@ -395,7 +387,7 @@
 			<button id="WEAPON_LASSO" class="weapon">Lasso</button>
 			<button id="WEAPON_MOONSHINEJUG" class="weapon">Moonshine Jug</button>
 			<button id="WEAPON_MELEE_TORCH" class="weapon">Torch</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_KIT_BINOCULARS{
 					background-image: url('https://vignette.wikia.nocookie.net/reddeadredemption/images/4/40/RD2_Binoculars_Symbol.png');
 				}
@@ -431,7 +423,7 @@
 			<button id="WEAPON_THROWN_MOLOTOV" class="weapon">Molotov</button>
 			<button id="WEAPON_THROWN_THROWING_KNIVES" class="weapon">Throwing Knives</button>
 			<button id="WEAPON_THROWN_TOMAHAWK" class="weapon">Tomahawk</button>
-			<style type="text/css">
+			<style>
 				#WEAPON_THROWN_TOMAHAWK_ANCIENT{
 					background-image: url('https://www.gtabase.com/images/red-dead-redemption-2/weapons/icon/ancient-tomahawk.jpg');
 				}
